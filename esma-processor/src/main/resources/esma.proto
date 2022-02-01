@@ -1,0 +1,64 @@
+// File name: esma.proto
+// Generated from : org.acme.initializer.TransparencyDataReportInitializer
+
+syntax = "proto2";
+
+package esma;
+
+
+
+message BigDecimal {
+   
+   optional bytes unscaledValue = 1;
+   
+   optional int32 scale = 2 [default = 0];
+}
+
+
+/**
+ * @Indexed
+ */
+message TransparencyDataReport {
+   
+   /**
+    * @Field(index=Index.YES, analyze = Analyze.NO, store = Store.NO)
+    */
+   required string techRcrdId = 1;
+   
+   /**
+    * @Field(index=Index.YES, analyze = Analyze.NO, store = Store.NO)
+    */
+   required string id = 2;
+   
+   /**
+    * @Field(index=Index.YES, analyze = Analyze.NO, store = Store.NO)
+    */
+   required string finInstrmClssfctn = 3;
+   
+   /**
+    * @Field(index=Index.YES, analyze = Analyze.NO, store = Store.NO)
+    */
+   optional string fullNm = 4;
+   
+   optional int64 rptgPrd_frDtToDt_frDt = 5;
+   
+   optional int64 rptgPrd_frDtToDt_toDt = 6;
+   
+   optional bool lqdty = 7;
+   
+   optional BigDecimal preTradLrgInScaleThrshld_nb = 8;
+   
+   optional BigDecimal preTradLrgInScaleThrshld_amt_value = 9;
+   
+   optional string preTradLrgInScaleThrshld_amt_ccy = 10;
+   
+   optional BigDecimal pstTradLrgInScaleThrshld_nb = 11;
+   
+   optional BigDecimal pstTradLrgInScaleThrshld_nb_amt_value = 12;
+   
+   optional string pstTradLrgInScaleThrshld_nb_amt_ccy = 13;
+   
+   optional BigDecimal sttstcs_ttlNbOfTxsExctd = 14;
+   
+   optional BigDecimal sttstcs_ttlVolOfTxsExctd = 15;
+}

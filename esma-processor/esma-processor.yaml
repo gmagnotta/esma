@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: esma-processor
+  labels:
+    app: esma-processor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: esma-processor
+  template:
+    metadata:
+      labels:
+        app: esma-processor
+    spec:
+      containers:
+        - name: esma-processor
+          image: quay.io/gmagnotta/esma-processor
+          env:
+            - name: QUARKUS_INFINISPAN_CLIENT_SERVER_LIST
+              value: 'datagrid-nodes:11222'
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 8443
+              protocol: TCP
+            - containerPort: 8778
+              protocol: TCP
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "128Mi"
+            limits:
+              cpu: "1000m"
+              memory: "2048Mi"
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
