@@ -30,6 +30,8 @@ spec:
                 secretKeyRef:
                   name: datagrid
                   key: password
+            - name: QUARKUS_INFINISPAN_CLIENT_CLIENT_INTELLIGENCE
+              value: HASH_DISTRIBUTION_AWARE
           ports:
             - containerPort: 8080
               protocol: TCP
