@@ -5,7 +5,7 @@
     <cache-container>
         <distributed-cache name="esma" statistics="true">
             <persistence passivation="true">
-              <file-store path="/opt/datagrid/server/data">
+              <file-store path="/opt/infinispan/server/data/esma">
               </file-store>
             </persistence>
             <memory max-size="1GiB" storage="OFF_HEAP"/>
