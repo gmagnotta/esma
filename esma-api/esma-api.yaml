@@ -20,6 +20,16 @@ spec:
           env:
             - name: QUARKUS_INFINISPAN_CLIENT_SERVER_LIST
               value: 'datagrid-nodes:11222'
+            - name: QUARKUS_INFINISPAN_CLIENT_AUTH_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: datagrid
+                  key: user
+            - name: QUARKUS_INFINISPAN_CLIENT_AUTH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: datagrid
+                  key: password
           ports:
             - containerPort: 8080
               protocol: TCP
