@@ -32,6 +32,8 @@ spec:
                   key: password
             - name: QUARKUS_INFINISPAN_CLIENT_CLIENT_INTELLIGENCE
               value: HASH_DISTRIBUTION_AWARE
+            - name: QUARKUS_INFINISPAN_CLIENT_USE_AUTH
+              value: 'true'
           ports:
             - containerPort: 8080
               protocol: TCP
